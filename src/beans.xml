@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+
+	<!-- <bean id="developpeur" class="com.objis.spring.demo.Developpeur"> -->
+	<!-- <property name="nom" value="Olivier"></property> -->
+	<!-- <property name="anneesExperiences"> -->
+	<!-- <value>7</value> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+	<!-- <bean id="chefDeveloppeur" class="com.objis.spring.demo.Developpeur"> -->
+	<!-- <property name="nom" value="Franck"></property> -->
+	<!-- <property name="anneesExperiences" value="10"></property> -->
+	<!-- </bean> -->
+	<!-- <bean id="societeDevLogiciel" class="com.objis.spring.demo.SocieteDevLogiciel"> -->
+	<!-- <property name="developpeur" ref="developpeur"></property> -->
+	<!-- <property name="chefDeveloppeur" ref="chefDeveloppeur"></property> -->
+	<!-- </bean> -->
+
+
+	<bean id="employe" class="com.objis.demoArchiJdbc.domaine.Employe">
+		<property name="nom" value="bob"></property>
+		<property name="prenom" value="marley"></property>
+		<property name="id" value="17"></property>
+	</bean>
+
+	<bean id="ddb" class="com.objis.demoArchiJdbc.dao.DaoDataBase">
+		<property name="url" value="jdbc:mysql://localhost/formation"></property>
+		<property name="login" value="root"></property>
+		<property name="passwd" value=""></property>
+	</bean>
+
+	<bean id="daoEmploye" class="com.objis.demoArchiJdbc.dao.DaoEmploye">
+		<property name="ddb" ref="ddb"></property>
+	</bean>
+
+	<bean id="serviceEmploye" class="com.objis.demoArchiJdbc.service.ServiceEmploye">
+		<property name="daoEmploye" ref="daoEmploye"></property>
+	</bean>
+
+
+</beans>
